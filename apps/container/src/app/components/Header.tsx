@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import { FC } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ const Header: FC = () => {
       elevation={0}
       sx={{ borderBottom: 1, borderColor: 'grey.400' }}
     >
-      <Toolbar sx={{ flexWrap: 'wrap' }}>
+      <Toolbar sx={{ flexWrap: 'wrap', justifyContent: 'space-between' }}>
         <Typography
           variant="h6"
           color="inherit"
@@ -21,6 +21,15 @@ const Header: FC = () => {
         >
           Cool eComm
         </Typography>
+        <Button
+          color="primary"
+          variant="outlined"
+          component={RouterLink}
+          to="/auth"
+          sx={{ my: 1, mx: 1.5 }}
+        >
+          Login
+        </Button>
       </Toolbar>
     </AppBar>
   );

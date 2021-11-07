@@ -15,6 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ecomm-mfes/common": ["libs/common/src/index.ts"],
+      "auth/AuthApp": ["apps/auth/src/bootstrap"],
       "products/ProductsApp": ["apps/products/src/bootstrap"]
     }
   },

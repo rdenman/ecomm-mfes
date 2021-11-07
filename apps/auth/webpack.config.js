@@ -5,7 +5,7 @@ module.exports = (config, context) => {
   return {
     ...config,
     output: {
-      uniqueName: 'container',
+      uniqueName: 'auth',
       publicPath: 'auto',
     },
     optimization: {
@@ -14,11 +14,11 @@ module.exports = (config, context) => {
     plugins: [
       ...config.plugins,
       new ModuleFederationPlugin({
-        name: 'container',
+        name: 'auth',
+        filename: 'remoteEntry.js',
         shared: dependencies,
-        remotes: {
-          auth: 'auth@http://localhost:3003/remoteEntry.js',
-          products: 'products@http://localhost:3001/remoteEntry.js',
+        exposes: {
+          './AuthApp': 'apps/auth/src/bootstrap',
         },
       }),
     ],

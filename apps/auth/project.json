@@ -5,7 +5,7 @@
   "prefix": "ecomm-auth",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/auth",
@@ -18,7 +18,10 @@
           "apps/auth/src/styles.css",
           "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
         ],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/auth/webpack.config.js"
+        }
       },
       "configurations": {
         "production": {
@@ -54,16 +57,14 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
-      "options": {
-        "port": 3003
-      },
+      "executor": "@nrwl/angular:webpack-server",
       "configurations": {
         "production": {
           "browserTarget": "auth:build:production"
         },
         "development": {
-          "browserTarget": "auth:build:development"
+          "browserTarget": "auth:build:development",
+          "port": 3003
         }
       },
       "defaultConfiguration": "development"
