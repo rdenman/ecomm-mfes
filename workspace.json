@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "container": "apps/container"
+    "container": "apps/container",
+    "products": "apps/products"
   }
 }
