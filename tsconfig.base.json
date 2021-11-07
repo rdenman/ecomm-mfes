@@ -17,6 +17,9 @@
     "paths": {
       "@ecomm-mfes/common": ["libs/common/src/index.ts"],
       "auth/AuthApp": ["apps/auth/src/bootstrap"],
+      "product-details/ProductDetailsApp": [
+        "apps/product-details/src/bootstrap"
+      ],
       "products/ProductsApp": ["apps/products/src/bootstrap"]
     }
   },

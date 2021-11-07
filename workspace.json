@@ -4,6 +4,7 @@
     "auth": "apps/auth",
     "common": "libs/common",
     "container": "apps/container",
+    "product-details": "apps/product-details",
     "products": "apps/products"
   }
 }

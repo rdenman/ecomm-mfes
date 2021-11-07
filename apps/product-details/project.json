@@ -1,0 +1,73 @@
+{
+  "root": "apps/product-details",
+  "sourceRoot": "apps/product-details/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/product-details",
+        "index": "apps/product-details/src/index.html",
+        "baseHref": "/",
+        "main": "apps/product-details/src/main.ts",
+        "polyfills": "apps/product-details/src/polyfills.ts",
+        "tsConfig": "apps/product-details/tsconfig.app.json",
+        "assets": [
+          "apps/product-details/src/favicon.ico",
+          "apps/product-details/src/assets"
+        ],
+        "styles": ["apps/product-details/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/products/webpack.config"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/product-details/src/environments/environment.ts",
+              "with": "apps/product-details/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "product-details:build",
+        "hmr": true,
+        "port": 3002
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "product-details:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/product-details/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/product-details"],
+      "options": {
+        "jestConfig": "apps/product-details/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
