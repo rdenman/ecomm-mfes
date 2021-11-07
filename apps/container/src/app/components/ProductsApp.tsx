@@ -1,6 +1,8 @@
 import { mount } from 'products/ProductsApp';
 import { FC, useEffect, useRef } from 'react';
 
+export const PRODUCTS_BASE_PATHNAME = '/';
+
 const ProductsApp: FC = () => {
   const ref = useRef<HTMLDivElement>(null);
 

@@ -1,27 +1,26 @@
 import { CssBaseline } from '@mui/material';
-import { createBrowserHistory } from 'history';
 import { FC, lazy, Suspense } from 'react';
-import { Route, Router, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { AUTH_BASE_PATHNAME } from './components/AuthApp';
 import Header from './components/Header';
+import { PRODUCTS_BASE_PATHNAME } from './components/ProductsApp';
 import Progress from './components/Progress';
 
 const AuthAppLazy = lazy(() => import('./components/AuthApp'));
 const ProductsAppLazy = lazy(() => import('./components/ProductsApp'));
 
-const history = createBrowserHistory();
-
 const App: FC = () => {
   return (
-    <Router history={history}>
+    <BrowserRouter>
       <CssBaseline />
       <Header />
       <Suspense fallback={<Progress />}>
         <Switch>
-          <Route path="/auth" component={AuthAppLazy} />
-          <Route path="/" component={ProductsAppLazy} />
+          <Route path={AUTH_BASE_PATHNAME} component={AuthAppLazy} />
+          <Route path={PRODUCTS_BASE_PATHNAME} component={ProductsAppLazy} />
         </Switch>
       </Suspense>
-    </Router>
+    </BrowserRouter>
   );
 };
 

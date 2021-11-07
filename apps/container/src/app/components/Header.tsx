@@ -1,8 +1,19 @@
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
-import { FC } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { FC, useState } from 'react';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
+import { AUTH_BASE_PATHNAME } from './AuthApp';
+import { PRODUCTS_BASE_PATHNAME } from './ProductsApp';
 
 const Header: FC = () => {
+  const history = useHistory();
+  const [disabled, setDisabled] = useState(
+    history.location.pathname.startsWith(AUTH_BASE_PATHNAME)
+  );
+
+  history.listen(() => {
+    setDisabled(history.location.pathname.startsWith(AUTH_BASE_PATHNAME));
+  });
+
   return (
     <AppBar
       position="static"
@@ -16,7 +27,7 @@ const Header: FC = () => {
           color="inherit"
           noWrap
           component={RouterLink}
-          to="/"
+          to={PRODUCTS_BASE_PATHNAME}
           sx={{ textDecoration: 'none' }}
         >
           Cool eComm
@@ -25,7 +36,8 @@ const Header: FC = () => {
           color="primary"
           variant="outlined"
           component={RouterLink}
-          to="/auth"
+          to={AUTH_BASE_PATHNAME}
+          disabled={disabled}
           sx={{ my: 1, mx: 1.5 }}
         >
           Login
