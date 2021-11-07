@@ -1,8 +1,11 @@
 import { CssBaseline } from '@mui/material';
 import { createBrowserHistory } from 'history';
-import { FC } from 'react';
-import { Router } from 'react-router-dom';
+import { FC, lazy, Suspense } from 'react';
+import { Route, Router, Switch } from 'react-router-dom';
 import Header from './components/Header';
+import Progress from './components/Progress';
+
+const ProductsAppLazy = lazy(() => import('./components/ProductsApp'));
 
 const history = createBrowserHistory();
 
@@ -11,6 +14,11 @@ const App: FC = () => {
     <Router history={history}>
       <CssBaseline />
       <Header />
+      <Suspense fallback={<Progress />}>
+        <Switch>
+          <Route path="/" component={ProductsAppLazy} />
+        </Switch>
+      </Suspense>
     </Router>
   );
 };
