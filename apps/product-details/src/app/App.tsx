@@ -1,10 +1,15 @@
 import { FC } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Details from './components/Details';
+import NotFound from './components/NotFound';
 
 const App: FC = () => {
   return (
     <BrowserRouter>
-      <div>Product Details</div>
+      <Switch>
+        <Route path="/:id" component={Details} />
+        <Route path="*" component={NotFound} />
+      </Switch>
     </BrowserRouter>
   );
 };
