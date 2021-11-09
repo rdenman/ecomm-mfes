@@ -17,6 +17,9 @@ module.exports = (config, context) => {
         name: 'products',
         filename: 'remoteEntry.js',
         shared: dependencies,
+        remotes: {
+          details: 'details@http://localhost:3002/remoteEntry.js',
+        },
         exposes: {
           './ProductsApp': './src/bootstrap',
         },

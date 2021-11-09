@@ -8,7 +8,7 @@ const DetailItem: FC = () => {
     <Box display="flex" alignItems="center">
       <Avatar
         variant="square"
-        src={faker.image.imageUrl(75, 50, 'tech')}
+        src={faker.image.imageUrl(75, 50, 'tech', true)}
         sx={{ width: 75, height: 50, mr: 2 }}
       />
       <Stack>

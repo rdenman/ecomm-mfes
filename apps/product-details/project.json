@@ -20,7 +20,7 @@
         ],
         "styles": ["apps/product-details/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/products/webpack.config"
+        "webpackConfig": "apps/product-details/webpack.config"
       },
       "configurations": {
         "production": {

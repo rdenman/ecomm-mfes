@@ -5,7 +5,7 @@ module.exports = (config, context) => {
   return {
     ...config,
     output: {
-      uniqueName: 'product-details',
+      uniqueName: 'details',
       publicPath: 'auto',
     },
     optimization: {
@@ -14,11 +14,12 @@ module.exports = (config, context) => {
     plugins: [
       ...config.plugins,
       new ModuleFederationPlugin({
-        name: 'product-details',
+        name: 'details',
         filename: 'remoteEntry.js',
         shared: dependencies,
         exposes: {
           './ProductDetailsApp': './src/bootstrap',
+          './ProductDetailItem': './src/modules/summary',
         },
       }),
     ],
